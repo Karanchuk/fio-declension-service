@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  fio-declension:
+    build: .
+    container_name: fio-declension-service
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data/exceptions.json:/app/data/exceptions.json:ro
+      - ./data/rare_names.json:/app/data/rare_names.json:ro
+      - ./data/unchanging_suffixes.json:/app/data/unchanging_suffixes.json:ro
+    restart: unless-stopped
